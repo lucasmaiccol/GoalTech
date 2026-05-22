@@ -46,7 +46,7 @@
 
 }
 
-.campo input :focus {
+.campo input:focus {
     outline: none;
     border-color: #1f8f5f;
     box-shadow: 0 0 0 3px rgba(31, 143, 95, 0.15);
@@ -60,7 +60,7 @@
     border-radius: 5px;
     border: none;                               /* Elimina el borde default que trae */
     cursor: pointer;                            /* Cuando se pasa el mouse por arriba cambia el cursor indicando que es algo clickeable */
-    transition: background-color 0,2x ease, transform 0,2x ease;     /* transition cambia suave, o,2x la velocidad y ease tipo de transicion lenta, acelere y termine lenta*/
+    transition: background-color 0,2s ease, transform 0,2s ease;     /* transition cambia suave, o,2x la velocidad y ease tipo de transicion lenta, acelere y termine lenta*/
 }
 
 .boton-login:hover {                  /* Hover significa cuando el mouse pase por arriba. */
@@ -105,7 +105,7 @@ body {
     color: #2f6f4e;
     text-decoration: none;
     font-weight: bold;
-    transition: color 0,2s ease, transform 0.2s ease;
+    transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .volver-inicio:hover {

@@ -8,9 +8,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
     $password = $_POST["password"];
 //guarda los datos que los usuarios envien.
+
+//verificacion en caso de que las casillas queden vacias.
     if (empty($email)) {
         $mensajeError = "Debe ingresar un correo electronico";
-    } else if (empty($password)) {
+    } elseif (empty($password)) {
         $mensajeError = "Debe ingresar una contraseña";
     } else {
         $mensajeExito = "Datos recibidos correctamente";
@@ -24,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión;</title>
+    <title>Iniciar Sesión</title>
     <link rel="stylesheet" href="../../css/estilo.css">
 </head>
 <body>
@@ -50,12 +52,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <!-- 
             value - pone adentro del campo el valor que tenga la variable $email.
             htmlspecialchars - hace que no se puedan enviar caracteres especiales dentro.
-            required - hace obligatorio llenar la casilla para enviar le mensaje - placeholder - pone dentro de la casilla un mensaje.
+            required - hace obligatorio llenar la casilla
+            placeholder - pone dentro de la casilla un mensaje.
             -->
             <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($email); ?>" required placeholder="ejemplo@gmail.com">
             </div>
             <div class="campo">
-                <label for="password">contraseña</label>
+                <label for="password">Contraseña</label>
                 <input type="password" id="password" name="password" required placeholder="Ingrese su contraseña">
             </div>
 
