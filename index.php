@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Sistema de reservas</h1>
-    <p>Bienvenido a mi primera pagina del projecto.</p>
+    <p>Bienvenido.</p>
     <a href="GestorDeCanchaDeFutbol/app/views/login.php">Iniciar Sesion</a>
 </body>
 </html>

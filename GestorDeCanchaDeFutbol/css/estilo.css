@@ -1,0 +1,118 @@
+.error {
+    color: #8a1f1f;
+    font-weight: bold;
+    background-color: #fdecec;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.exito {
+    color: #1f6b45;
+    font-weight: bold;
+    background-color: #e9f7ef;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.formulario-login {
+    max-width: 400px;                                       /* Cambia el tamaño del formulario. */
+    width: 100%;
+    margin-top: 20px;                                       /* Sube el formulario 20px. */
+    display: flex;                                          /* Flexbox para ordenar los elementos. */
+    flex-direction: column;                                 /* Coloca los elementos uno abajo del otro. */
+    gap: 16px;                                              /* Deja espacio entre los elementos. */
+    background-color: white;                              /* Gondo blanco al formulario. */
+    padding: 24px;                                          /* Feja mas espacio dentro del background y queda mas profesional. */
+    border-radius: 8px;                                     /* Hace el borde curvo. */
+    box-shadow: 0 8px 24px rgba(31,41, 51, 0.12);         /* El 0 agrega sombra hacia los lados, 8px sobra hacia abajo, 24px es un difuminado y el rgba es el color con poca opacidad. */
+    text-align: left;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.campo label {
+    font-weight: bold;
+}
+
+.campo input {
+    padding: 8px;                     /* Ajusta espacio entre las letras y el borde. */
+    border: 1px solid #2e7d32;      /* Cambia el tamaño del borde, linea solida y color gris. */
+    border-radius: 5px;               /* Redondea las esquinas del borde. */
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+}
+
+.campo input :focus {
+    outline: none;
+    border-color: #1f8f5f;
+    box-shadow: 0 0 0 3px rgba(31, 143, 95, 0.15);
+}
+
+.boton-login {
+    font-weight: bold;
+    background-color: #2f6f4e;
+    color: white;
+    padding: 6px;
+    border-radius: 5px;
+    border: none;                               /* Elimina el borde default que trae */
+    cursor: pointer;                            /* Cuando se pasa el mouse por arriba cambia el cursor indicando que es algo clickeable */
+    transition: background-color 0,2x ease, transform 0,2x ease;     /* transition cambia suave, o,2x la velocidad y ease tipo de transicion lenta, acelere y termine lenta*/
+}
+
+.boton-login:hover {                  /* Hover significa cuando el mouse pase por arriba. */
+    background-color: #24583e;
+    transform: translateY(-1px);      /* Mueve el boton 1 pixel hacia arriba cuando pasa el mouse. */
+}
+
+.boton-login:active {
+    transform: translateY(0);
+}
+
+.contenedor-login {                   /* main class */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;              /* Centra los elementos de izquierda a derecha. */
+    justify-content: center;          /* Centra todo bien en el medio de arriba y abajo, deja los mensajes centrados. */
+    background-color: #f4f7f5;
+    text-align: center;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #1f2933;
+
+}
+
+.contenedor-login h1 {
+    margin: 0;                      /* Quita margen por defecto del titulo. */
+    color: #1f2933;
+}
+
+.subtitulo-login {
+    margin: 8px 0 0;                /* 8px arriba 0 a los costados 0 abajo */
+    color: #5f7f68;
+    font-size: 15px;
+}
+
+.volver-inicio {
+    margin-top: 16px;
+    color: #2f6f4e;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0,2s ease, transform 0.2s ease;
+}
+
+.volver-inicio:hover {
+    color: #24583e;
+    transform: translateY(-1px);
+}
+
+.volver-inicio:active {
+    transform: translateY(0);
+}

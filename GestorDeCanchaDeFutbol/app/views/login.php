@@ -1,12 +1,22 @@
 <?php
+$mensajeError = "";
+$mensajeExito = "";
+$email = "";
+//variable vacia para luego imprimir mensajes de errores.
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//revisa si el usuario envio el formulario.
     $email = $_POST["email"];
     $password = $_POST["password"];
-
-    echo "Correo electronico  " . $email;
-    echo "<br>";
-    echo "Contraseña recibida correctamente";
+//guarda los datos que los usuarios envien.
+    if (empty($email)) {
+        $mensajeError = "Debe ingresar un correo electronico";
+    } else if (empty($password)) {
+        $mensajeError = "Debe ingresar una contraseña";
+    } else {
+        $mensajeExito = "Datos recibidos correctamente";
+    }
 }
+//verificacion en caso de que las casillas queden vacias.
 ?>
 
 <!DOCTYPE html>
@@ -14,23 +24,44 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesion;</title>
+    <title>Iniciar Sesión;</title>
+    <link rel="stylesheet" href="../../css/estilo.css">
 </head>
 <body>
-    <h1>Iniciar Sesion</h1>
+    <main class="contenedor-login">
+    <h1>Iniciar Sesión</h1>
+    <p class="subtitulo-login">Ingrese sus datos para acceder al sistema</p>
     
-    <form action="login.php" method="post">
-        <label for="email">Correo electronico</label>
-        <input type="email" id="email" name="email">
+    <?php
+    //Si la variable $mensajeError no esta vacia, se muestra un parrafo con el mensaje, si esta vacia no se muestra nada.
+    if (!empty($mensajeError)) { ?>
+        <p class="error"><?php echo $mensajeError; ?></p>
+    <?php } ?>
 
-        <br><br>
+    <?php
+    //Si la variable $mensajeExito no esta vacia, se muestra un parrafo con el mensaje, si esta vacia no se muestra nada.
+    if (!empty($mensajeExito)) { ?>
+        <p class="exito"><?php echo $mensajeExito; ?></p>
+    <?php } ?>
+    
+        <form class="formulario-login" action="login.php" method="post">
+            <div class="campo">
+            <label for="email">Correo electronico</label>
+            <!-- 
+            value - pone adentro del campo el valor que tenga la variable $email.
+            htmlspecialchars - hace que no se puedan enviar caracteres especiales dentro.
+            required - hace obligatorio llenar la casilla para enviar le mensaje - placeholder - pone dentro de la casilla un mensaje.
+            -->
+            <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($email); ?>" required placeholder="ejemplo@gmail.com">
+            </div>
+            <div class="campo">
+                <label for="password">contraseña</label>
+                <input type="password" id="password" name="password" required placeholder="Ingrese su contraseña">
+            </div>
 
-        <label for="password">contraseña</label>
-        <input type="password" id="password" name="password">
-
-        <br><br>
-
-        <button type="submit">Entrar</button>
-    </form>
+        <button class="boton-login" type="submit">Entrar</button>
+        </form>
+        <a class="volver-inicio" href="../../../index.php">Volver al inicio</a>  <!-- ir a otra pagina, en este caso al inicio -->
+    </main>
 </body>
 </html>
