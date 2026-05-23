@@ -120,3 +120,54 @@ body {
 }
 
 /* Registro */
+
+.formulario-registro {
+    max-width: 400px;                                    
+    width: 100%;
+    margin-top: 20px;                                 
+    display: flex;                                      
+    flex-direction: column;                            
+    gap: 16px;                                           
+    background-color: white;                            
+    padding: 24px;                                         
+    border-radius: 8px;                                     
+    box-shadow: 0 8px 24px rgba(31,41, 51, 0.12);         
+    text-align: left;
+}
+
+.boton-registro {
+    font-weight: bold;
+    background-color: #2f6f4e;
+    color: white;
+    padding: 6px;
+    border-radius: 5px;
+    border: none;                               /* Elimina el borde default que trae */
+    cursor: pointer;                            /* Cuando se pasa el mouse por arriba cambia el cursor indicando que es algo clickeable */
+    transition: background-color 0,2s ease, transform 0,2s ease;     /* transition cambia suave, o,2x la velocidad y ease tipo de transicion lenta, acelere y termine lenta*/
+}
+
+
+
+.boton-registro:hover {                  /* Hover significa cuando el mouse pase por arriba. */
+    background-color: #24583e;
+    transform: translateY(-1px);      /* Mueve el boton 1 pixel hacia arriba cuando pasa el mouse. */
+}
+
+.boton-registro:active {
+    transform: translateY(0);
+}
+
+.contenedor-registro {                   /* main class */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;              /* Centra los elementos de izquierda a derecha. */
+    justify-content: center;          /* Centra todo bien en el medio de arriba y abajo, deja los mensajes centrados. */
+    background-color: #f4f7f5;
+    text-align: center;
+}
+
+.contenedor-login {
+    margin: 0;
+    color: #1f2933;
+}

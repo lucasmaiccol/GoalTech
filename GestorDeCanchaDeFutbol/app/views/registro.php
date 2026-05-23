@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // guarda los datos que los usuarios envien.
 
     if(empty($nombre)) {
-        $mensajeError = "Debe ingresar un nombre de usuario";
+        $mensajeError = "Debe ingresar un nombre";
     } elseif (empty($email)) {
         $mensajeError = "Debe ingresar un correo electronico";
     } elseif (empty($telefono)) {
@@ -43,26 +43,51 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="../../css/estilo.css">
 </head>
 <body>
+    <main class="contenedor-registro">
     <h1>Registrarse</h1>
-    <form class="formulario-registro" action="registro.php" method="post">
+    
+    <?php
+    if (!empty($mensajeError)) { ?>
+        <p class="error"><?php echo $mensajeError; ?></p>
+    <?php } ?>
+
+    <?php
+    if (!empty($mensajeExito)) { ?>
+        <p class="exito"><?php echo $mensajeExito; ?></P>
+    <?php } ?>
+
+    
+    
+    
+    
+        <form class="formulario-registro" action="registro.php" method="post">
+            <div class="campo">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" value="<?php echo htmlspecialchars($nombre); ?>" required placeholder="Ingrese su nombre">
+            </div>
         
-        <label for="nombre">Nombre</label>
-        <input type="text" id="nombre" name="nombre">
-
-        <label for="email">Correo electronico</label>
-        <input type="email" id="email" name="email">
-
-        <label for="telefono">Numero de telefono</label>
-        <input type="tel" id="telefono" name="telefono">
+            <div class="campo">
+            <label for="email">Correo electronico</label>
+            <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($email); ?>" required placeholder="ejemplo@gmail.com">
+            </div>
         
-        <label for="password">Contraseña</label>
-        <input type="password" id="password" name="password">
-
-        <label for="confirmPassword">Confirmar contraseña</label>
-        <input type="password" id="confirmPassword" name="confirmPassword">
+            <div class="campo">
+            <label for="telefono">Numero de telefono</label>
+            <input type="tel" id="telefono" name="telefono" required placeholder="Ingrese un telefono">
+            </div>
         
-        <button type="submit">Registrarse</button>
-</form>
+            <div class="campo">
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" name="password" required placeholder="Ingrese su contraseña">
+            </div>
+        
+            <div class="campo">
+            <label for="confirmPassword">Confirmar contraseña</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Confirme su contraseña">
+            </div>
 
+            <button class="boton-registro" type="submit">Registrarse</button>
+        </form>
+    </main>
 </body>
 </html>
