@@ -1,3 +1,5 @@
+/* Login */
+
 .error {
     color: #8a1f1f;
     font-weight: bold;
@@ -116,3 +118,5 @@ body {
 .volver-inicio:active {
     transform: translateY(0);
 }
+
+/* Registro */

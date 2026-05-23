@@ -10,5 +10,7 @@
     <h1>Sistema de reservas</h1>
     <p>Bienvenido.</p>
     <a href="GestorDeCanchaDeFutbol/app/views/login.php">Iniciar Sesion</a>
+    <br><br>
+    <a href="GestorDeCanchaDeFutbol/app/views/registro.php">Registrarse</a>
 </body>
 </html>

@@ -2,7 +2,7 @@
 $mensajeError = "";
 $mensajeExito = "";
 $email = "";
-//variable vacia para luego imprimir mensajes de errores.
+//variable vacia para luego imprimir mensajes.
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 //revisa si el usuario envio el formulario.
     $email = $_POST["email"];
@@ -64,6 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <button class="boton-login" type="submit">Entrar</button>
         </form>
+        <p class="registro-link">¿No tienes cuenta? <a href="registro.php">Regístrate aquí</a></p>
         <a class="volver-inicio" href="../../../index.php">Volver al inicio</a>  <!-- ir a otra pagina, en este caso al inicio -->
     </main>
 </body>
