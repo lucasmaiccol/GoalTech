@@ -4,7 +4,7 @@ $mensajeExito = "";
 $nombre = "";
 $email = "";
 $telefono = "";
-
+require_once "../../config/conexion.php";
 
 //variable vacia para luego imprimir mensajes.
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -28,8 +28,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } elseif ($password != $confirmPassword) {
         $mensajeError = "Las contraseñas no coinciden";
     } else {
-        $mensajeExito = "Datos recibidos correctamente";
-    }
+    $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+
+    $sql = "INSERT INTO usuarios (nombre, email, telefono, password, rol)
+            VALUES (:nombre, :email, :telefono, :password, :rol)";
+
+    $stmt = $conexion->prepare($sql);
+
+    $stmt->execute([
+        ":nombre" => $nombre,
+        ":email" => $email,
+        ":telefono" => $telefono,
+        ":password" => $passwordHash,
+        ":rol" => "cliente"
+    ]);
+
+    $mensajeExito = "Usuario registrado correctamente";
+}
 }
 ?>
 
