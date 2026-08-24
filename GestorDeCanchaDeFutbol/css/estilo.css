@@ -171,3 +171,167 @@ body {
     margin: 0;
     color: #1f2933;
 }
+
+/* ============================
+   Landing (index.php)
+   Paleta: noche de partido.
+   Fondo casi negro-verdoso + reflectores,
+   con el verde de marca como acento brillante.
+   ============================ */
+
+.pagina-inicio {
+    margin: 0;
+    font-family: 'Inter', Arial, sans-serif;
+    background-color: #0d1f16;
+    color: #eef7f1;
+}
+
+.nav-inicio {
+    padding: 24px 32px;
+}
+
+.logo-inicio {
+    font-family: 'Oswald', Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #eef7f1;
+}
+
+.logo-acento {
+    color: #7ee8a4;                 /* Verde "reflector", mas brillante que el verde de marca */
+}
+
+.hero-inicio {
+    position: relative;
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 40px 24px 120px;
+    /* Reflectores: brillo radial arriba + textura de cesped en franjas */
+    background:
+        radial-gradient(ellipse 700px 420px at 50% -10%, rgba(126, 232, 164, 0.18), transparent 70%),
+        repeating-linear-gradient(
+            90deg,
+            #0d1f16 0px,
+            #0d1f16 60px,
+            #10261b 60px,
+            #10261b 120px
+        );
+}
+
+.lineas-cancha {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    width: 160%;
+    max-width: 1100px;
+    opacity: 0.35;
+    transform: translateX(-50%) rotateX(58deg);
+    pointer-events: none;
+}
+
+.linea-svg {
+    fill: none;
+    stroke: #7ee8a4;
+    stroke-width: 2;
+}
+
+.punto-svg {
+    fill: #7ee8a4;
+}
+
+.contenido-hero {
+    position: relative;                 /* Queda por encima de las lineas de cancha */
+    z-index: 1;
+    max-width: 620px;
+    text-align: center;
+}
+
+.eyebrow-hero {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #7ee8a4;
+    margin-bottom: 16px;
+}
+
+.hero-inicio h1 {
+    font-family: 'Oswald', Arial, sans-serif;
+    font-weight: 700;
+    font-size: clamp(36px, 6vw, 56px);
+    line-height: 1.1;
+    margin: 0 0 16px;
+    color: #ffffff;
+}
+
+.subtitulo-hero {
+    font-size: 17px;
+    line-height: 1.5;
+    color: #9db8a9;
+    margin: 0 0 32px;
+}
+
+.acciones-hero {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.boton-primario,
+.boton-secundario {
+    font-weight: 600;
+    font-size: 15px;
+    padding: 12px 28px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+.boton-primario {
+    background-color: #7ee8a4;
+    color: #0d1f16;
+    border: 1px solid #7ee8a4;
+}
+
+.boton-primario:hover {
+    background-color: #66d690;
+    transform: translateY(-1px);
+}
+
+.boton-secundario {
+    background-color: transparent;
+    color: #eef7f1;
+    border: 1px solid #3a5a48;
+}
+
+.boton-secundario:hover {
+    border-color: #7ee8a4;
+    color: #7ee8a4;
+    transform: translateY(-1px);
+}
+
+.boton-primario:active,
+.boton-secundario:active {
+    transform: translateY(0);
+}
+
+/* Mobile: menos altura de reflector, texto mas compacto */
+@media (max-width: 480px) {
+    .hero-inicio {
+        padding-bottom: 80px;
+    }
+    .acciones-hero {
+        flex-direction: column;
+        width: 100%;
+    }
+    .boton-primario, .boton-secundario {
+        width: 100%;
+    }
+}
