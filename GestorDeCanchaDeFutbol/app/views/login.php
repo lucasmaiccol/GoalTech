@@ -1,4 +1,7 @@
 <?php
+require_once __DIR__ . "/../../config/conexion.php";
+require_once __DIR__ . "/../controllers/AuthController.php";
+
 $mensajeError = "";
 $mensajeExito = "";
 $email = "";
@@ -15,7 +18,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } elseif (empty($password)) {
         $mensajeError = "Debe ingresar una contraseña";
     } else {
-        $mensajeExito = "Datos recibidos correctamente";
+        // Aca es donde antes se ponia "Datos recibidos correctamente"
+        // sin chequear nada. Ahora le preguntamos de verdad al controlador.
+        $auth = new AuthController($conexion);
+        $resultado = $auth->iniciarSesion($email, $password);
+
+        if ($resultado["exito"]) {
+            $mensajeExito = $resultado["mensaje"];
+            // Ya quedo logueado (session_start + $_SESSION adentro del controller).
+            // Cuando exista dashboard.php, aca va: header("Location: dashboard.php"); exit;
+        } else {
+            $mensajeError = $resultado["mensaje"];
+        }
     }
 }
 //verificacion en caso de que las casillas queden vacias.

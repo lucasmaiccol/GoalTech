@@ -25,7 +25,7 @@
 
         <div class="contenido-hero">
             <span class="eyebrow-hero">Reservas online 24/7</span>
-            <h1>Tu cancha,<br>a un toque de distancia.</h1>
+            <h1>Tu cancha,<br>tu tiempo, tu elección</h1>
             <p class="subtitulo-hero">Elegí el horario, reservá y jugá. Sin llamados, sin vueltas.</p>
 
             <div class="acciones-hero">
