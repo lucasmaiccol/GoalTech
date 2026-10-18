@@ -1,0 +1,193 @@
+/* tema.css: estilos COMPARTIDOS por la portada (index.php), el login y el registro, para que las tres se vean iguales. */
+
+:root {                                       /* Variables de color: se cambian aca y se actualizan en todo el sitio. */
+    --verde: #7ee8a4;                         /* Verde brillante (acento principal). */
+    --verde-marca: #2f6f4e;                   /* Verde de marca (botones del panel). */
+    --oscuro: #06130c;                        /* Verde casi negro (fondos). */
+    --texto: #eef7f1;                         /* Texto claro. */
+    --texto-suave: #c9ddd0;                   /* Texto claro apagado. */
+}
+
+body.tema {                                   /* Cuerpo de las paginas con este tema. */
+    margin: 0;                                /* Sin margen por defecto. */
+    min-height: 100vh;                        /* Ocupa al menos toda la pantalla. */
+    font-family: 'Inter', Arial, sans-serif;  /* Tipografia del cuerpo. */
+    color: var(--texto);                      /* Texto claro. */
+    background: linear-gradient(110deg, rgba(4, 12, 8, 0.93) 0%, rgba(4, 12, 8, 0.78) 48%, rgba(4, 12, 8, 0.55) 100%), url("https://images.unsplash.com/photo-1604412132568-9d5c14de13c4?auto=format&fit=crop&w=1920&q=80") center / cover fixed, url("../img/canchas/fondo.svg") center / cover fixed; /* Capa oscura + foto real + dibujo de respaldo (solo se ve si la foto no carga). */
+    position: relative;                       /* Necesario para el resplandor de abajo. */
+    overflow-x: hidden;                       /* Evita scroll horizontal por las fotos rotadas. */
+}
+
+body.tema::before {                           /* Resplandor verde decorativo en una esquina. */
+    content: "";                              /* Elemento vacio (solo decoracion). */
+    position: fixed;                          /* Queda fijo al hacer scroll. */
+    top: -20vh;                               /* Sube un poco fuera de la pantalla. */
+    left: -10vw;                              /* Sale un poco por la izquierda. */
+    width: 60vw;                              /* Ancho del resplandor. */
+    height: 60vh;                             /* Alto del resplandor. */
+    background: radial-gradient(closest-side, rgba(126, 232, 164, 0.22), transparent); /* Circulo verde que se desvanece. */
+    pointer-events: none;                     /* No interfiere con los clics. */
+    z-index: 0;                               /* Queda detras del contenido. */
+}
+
+body.tema > * {                               /* Todo el contenido directo de la pagina... */
+    position: relative;                       /* ...se posiciona... */
+    z-index: 1;                               /* ...por encima del resplandor. */
+}
+
+.tema-logo {                                  /* Logo "GoalTech". */
+    font-family: 'Oswald', Arial, sans-serif; /* Tipografia de titulos. */
+    font-size: 28px;                          /* Tamaño del logo. */
+    font-weight: 700;                         /* Letra gruesa. */
+    letter-spacing: 0.5px;                    /* Un poco de separacion entre letras. */
+    color: #ffffff;                           /* Blanco. */
+    text-decoration: none;                    /* Sin subrayado. */
+}
+
+.tema-logo span {                             /* La parte "Tech". */
+    color: var(--verde);                      /* Verde brillante. */
+}
+
+.etiqueta-top {                               /* Texto chico sobre los titulos (ej: "Reservas online 24/7"). */
+    display: inline-block;                    /* Permite darle espacio interno. */
+    padding: 6px 14px;                        /* Espacio interno. */
+    border: 1px solid rgba(126, 232, 164, 0.5); /* Borde verde fino. */
+    border-radius: 999px;                     /* Forma de pildora. */
+    background: rgba(126, 232, 164, 0.1);     /* Fondo verde muy suave. */
+    color: var(--verde);                      /* Texto verde. */
+    font-size: 12px;                          /* Letra chica. */
+    font-weight: 600;                         /* Semi-negrita. */
+    letter-spacing: 1.5px;                    /* Letras separadas. */
+    text-transform: uppercase;                /* Todo en mayusculas. */
+}
+
+.titulo-grande {                              /* Titulos grandes de la portada y del login. */
+    font-family: 'Oswald', Arial, sans-serif; /* Tipografia de titulos. */
+    font-size: clamp(36px, 5vw, 62px);        /* Tamaño que se adapta a la pantalla (min 36px, max 62px). */
+    line-height: 1.05;                        /* Lineas juntas. */
+    margin: 18px 0 14px;                      /* Separacion arriba y abajo. */
+    color: #ffffff;                           /* Blanco. */
+    text-transform: uppercase;                /* Mayusculas, estilo deportivo. */
+}
+
+.titulo-grande em {                           /* Palabra destacada dentro del titulo. */
+    font-style: normal;                       /* Sin cursiva. */
+    color: var(--verde);                      /* Verde brillante. */
+    text-shadow: 0 0 28px rgba(126, 232, 164, 0.45); /* Brillo verde. */
+}
+
+.texto-hero {                                 /* Parrafo bajo el titulo. */
+    font-size: 17px;                          /* Tamaño de letra. */
+    line-height: 1.6;                         /* Altura de linea comoda. */
+    color: var(--texto-suave);                /* Texto claro apagado. */
+    max-width: 520px;                         /* No se estira demasiado. */
+    margin: 0 0 22px;                         /* Separacion hacia abajo. */
+}
+
+.btn-verde {                                  /* Boton principal verde con brillo. */
+    display: inline-block;                    /* Permite darle tamaño a un enlace. */
+    padding: 14px 28px;                       /* Espacio interno. */
+    border-radius: 10px;                      /* Esquinas redondeadas. */
+    background: linear-gradient(135deg, #7ee8a4, #3fcf7d); /* Degradado verde. */
+    color: #052012;                           /* Texto verde muy oscuro. */
+    font-weight: 700;                         /* Negrita. */
+    text-decoration: none;                    /* Sin subrayado. */
+    box-shadow: 0 10px 30px rgba(63, 207, 125, 0.35); /* Brillo verde debajo. */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Animacion suave. */
+}
+
+.btn-verde:hover {                            /* Cuando el mouse pasa por arriba. */
+    transform: translateY(-3px);              /* Sube un poco. */
+    box-shadow: 0 16px 38px rgba(63, 207, 125, 0.5); /* El brillo se intensifica. */
+}
+
+.btn-borde {                                  /* Boton secundario con borde. */
+    display: inline-block;                    /* Permite darle tamaño a un enlace. */
+    padding: 13px 26px;                       /* Espacio interno. */
+    border-radius: 10px;                      /* Esquinas redondeadas. */
+    border: 1px solid rgba(255, 255, 255, 0.45); /* Borde blanco suave. */
+    color: #ffffff;                           /* Texto blanco. */
+    font-weight: 600;                         /* Semi-negrita. */
+    text-decoration: none;                    /* Sin subrayado. */
+    background: rgba(255, 255, 255, 0.06);    /* Fondo casi transparente. */
+    backdrop-filter: blur(6px);               /* Desenfoca lo que hay detras (efecto vidrio). */
+    transition: background 0.2s ease, transform 0.2s ease; /* Animacion suave. */
+}
+
+.btn-borde:hover {                            /* Cuando el mouse pasa por arriba. */
+    background: rgba(255, 255, 255, 0.16);    /* Se aclara. */
+    transform: translateY(-3px);              /* Sube un poco. */
+}
+
+/* ---------- Collage de fotos (parte mas llamativa) ---------- */
+
+.collage {                                    /* Contenedor del collage de fotos. */
+    position: relative;                       /* Las fotos se posicionan dentro de el. */
+    width: 100%;                              /* Ocupa todo el ancho disponible. */
+    max-width: 540px;                         /* Pero no mas de 540px. */
+    height: 380px;                            /* Alto fijo. */
+}
+
+.collage .foto {                              /* Cada foto del collage. */
+    position: absolute;                       /* Se coloca en un lugar exacto. */
+    object-fit: cover;                        /* Recorta sin deformar. */
+    border-radius: 16px;                      /* Esquinas redondeadas. */
+    border: 3px solid rgba(255, 255, 255, 0.92); /* Marco blanco, como una foto impresa. */
+    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.55); /* Sombra fuerte. */
+    transition: transform 0.35s ease, z-index 0.35s ease; /* Animacion suave al pasar el mouse. */
+    animation: flotar 7s ease-in-out infinite; /* Movimiento suave de subir y bajar. */
+}
+
+.collage .f1 {                                /* Foto grande de arriba a la izquierda. */
+    width: 64%; height: 62%;                  /* Tamaño. */
+    left: 0; top: 0;                          /* Posicion. */
+    transform: rotate(-5deg);                 /* Inclinada a la izquierda. */
+}
+
+.collage .f2 {                                /* Foto de la derecha. */
+    width: 52%; height: 54%;                  /* Tamaño. */
+    right: 0; top: 10%;                       /* Posicion. */
+    transform: rotate(4deg);                  /* Inclinada a la derecha. */
+    animation-delay: -2.3s;                   /* Desfasada para que no se muevan todas juntas. */
+}
+
+.collage .f3 {                                /* Foto de abajo. */
+    width: 58%; height: 50%;                  /* Tamaño. */
+    left: 20%; bottom: 0;                     /* Posicion. */
+    transform: rotate(-1.5deg);               /* Apenas inclinada. */
+    animation-delay: -4.6s;                   /* Desfasada. */
+}
+
+.collage .foto:hover {                        /* Cuando el mouse pasa por una foto. */
+    transform: rotate(0deg) scale(1.06);      /* Se endereza y se agranda. */
+    z-index: 5;                               /* Pasa al frente. */
+}
+
+@keyframes flotar {                           /* Animacion: sube y baja suavemente. */
+    0%, 100% { margin-top: 0; }               /* Posicion inicial y final. */
+    50% { margin-top: -10px; }                /* A mitad de camino sube 10px. */
+}
+
+.collage .chip {                              /* Cartelitos flotantes sobre el collage. */
+    position: absolute;                       /* Se colocan en un lugar exacto. */
+    z-index: 6;                               /* Por encima de las fotos. */
+    padding: 8px 14px;                        /* Espacio interno. */
+    border-radius: 999px;                     /* Forma de pildora. */
+    background: rgba(6, 19, 12, 0.78);        /* Fondo oscuro translucido. */
+    border: 1px solid rgba(126, 232, 164, 0.6); /* Borde verde. */
+    color: var(--verde);                      /* Texto verde. */
+    font-size: 13px;                          /* Letra chica. */
+    font-weight: 600;                         /* Semi-negrita. */
+    backdrop-filter: blur(6px);               /* Efecto vidrio. */
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.4); /* Sombra. */
+}
+
+.collage .chip1 { left: -6px; bottom: 18%; }  /* Cartelito de abajo a la izquierda. */
+.collage .chip2 { right: 4%; bottom: 6%; }    /* Cartelito de abajo a la derecha. */
+
+@media (max-width: 900px) {                   /* Reglas para tablets y celulares. */
+    .collage {                                /* El collage... */
+        height: 300px;                        /* ...es mas bajo. */
+        margin: 0 auto;                       /* ...y queda centrado. */
+    }
+}

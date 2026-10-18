@@ -1,0 +1,496 @@
+/* panel.css: estilos del panel (dashboard cliente y administracion). Reutiliza los colores de estilo.css. */
+
+body.panel {                                  /* Estilo base de todas las paginas del panel. */
+    background-color: #f4f7f5;                /* Fondo gris verdoso claro, igual que el login. */
+    font-family: 'Inter', Arial, sans-serif;  /* Tipografia del cuerpo (si no carga, usa Arial). */
+    min-height: 100vh;                        /* El fondo ocupa toda la altura de la pantalla. */
+}
+
+/* ---------- Barra superior ---------- */
+
+.barra {                                      /* Barra de navegacion de arriba. */
+    display: flex;                            /* Pone logo y menu en la misma fila. */
+    justify-content: space-between;           /* Logo a la izquierda, menu a la derecha. */
+    align-items: center;                      /* Los centra verticalmente. */
+    flex-wrap: wrap;                          /* En pantallas chicas permite pasar a otra linea. */
+    gap: 12px;                                /* Espacio entre logo y menu cuando se apilan. */
+    padding: 16px 32px;                       /* Espacio interno de la barra. */
+    background-color: #0d1f16;                /* Verde casi negro de la landing. */
+}
+
+.barra-logo {                                 /* Logo "GoalTech" de la barra. */
+    font-family: 'Oswald', Arial, sans-serif; /* Tipografia de titulos. */
+    font-size: 22px;                          /* Tamaño del logo. */
+    font-weight: 600;                         /* Grosor de la letra. */
+    color: #eef7f1;                           /* Texto claro. */
+    text-decoration: none;                    /* Saca el subrayado del enlace. */
+}
+
+.barra-logo span {                            /* La parte "Tech" del logo. */
+    color: #7ee8a4;                           /* Verde reflector. */
+}
+
+.barra-nav {                                  /* Contenedor de los enlaces del menu. */
+    display: flex;                            /* Enlaces en fila. */
+    align-items: center;                      /* Alineados verticalmente. */
+    flex-wrap: wrap;                          /* Pasan a otra linea si no entran. */
+    gap: 20px;                                /* Espacio entre enlaces. */
+}
+
+.barra-nav a {                                /* Cada enlace del menu. */
+    color: #c9ddd0;                           /* Verde grisaceo claro. */
+    text-decoration: none;                    /* Sin subrayado. */
+    font-weight: 500;                         /* Grosor medio. */
+    transition: color 0.2s ease;              /* Cambio de color suave al pasar el mouse. */
+}
+
+.barra-nav a:hover {                          /* Cuando el mouse pasa por arriba. */
+    color: #7ee8a4;                           /* Se pone verde brillante. */
+}
+
+.barra-usuario {                              /* Texto con el nombre del usuario logueado. */
+    color: #9db8a9;                           /* Gris verdoso apagado. */
+    font-size: 14px;                          /* Un poco mas chico que el resto. */
+}
+
+.barra-nav .barra-salir {                     /* Enlace "Salir". */
+    border: 1px solid #3a5a48;                /* Borde fino para que parezca boton. */
+    border-radius: 6px;                       /* Esquinas redondeadas. */
+    padding: 6px 14px;                        /* Espacio interno. */
+}
+
+/* ---------- Contenido ---------- */
+
+.panel-contenido {                            /* Zona principal debajo de la barra. */
+    max-width: 1100px;                        /* Ancho maximo para que no quede gigante en pantallas grandes. */
+    margin: 0 auto;                           /* Lo centra horizontalmente. */
+    padding: 32px 24px 64px;                  /* Espacio arriba, a los lados y abajo. */
+}
+
+.panel-titulo {                               /* Titulo principal de cada pagina. */
+    font-family: 'Oswald', Arial, sans-serif; /* Tipografia de titulos. */
+    font-size: 32px;                          /* Tamaño grande. */
+    margin: 0 0 20px;                         /* Separacion hacia abajo. */
+    color: #0d1f16;                           /* Verde muy oscuro. */
+}
+
+.panel-subtitulo {                            /* Titulo de cada seccion. */
+    font-family: 'Oswald', Arial, sans-serif; /* Tipografia de titulos. */
+    font-size: 22px;                          /* Tamaño mediano. */
+    margin: 32px 0 12px;                      /* Espacio arriba y abajo. */
+    color: #0d1f16;                           /* Verde muy oscuro. */
+}
+
+.tarjeta .panel-subtitulo {                   /* Subtitulo cuando esta dentro de una caja blanca. */
+    margin-top: 0;                            /* No necesita espacio arriba. */
+}
+
+.encabezado-seccion {                         /* Fila con titulo a la izquierda y boton a la derecha. */
+    display: flex;                            /* Elementos en fila. */
+    justify-content: space-between;           /* Uno en cada extremo. */
+    align-items: center;                      /* Centrados verticalmente. */
+    flex-wrap: wrap;                          /* Pasan a otra linea si no entran. */
+    gap: 12px;                                /* Espacio entre ellos. */
+    margin-bottom: 20px;                      /* Separacion hacia abajo. */
+}
+
+.encabezado-seccion .panel-titulo {           /* Titulo dentro de esa fila. */
+    margin: 0;                                /* Sin margen, ya lo maneja la fila. */
+}
+
+.tarjeta {                                    /* Caja blanca que contiene formularios y tablas. */
+    background-color: white;                  /* Fondo blanco. */
+    border-radius: 8px;                       /* Esquinas redondeadas. */
+    padding: 24px;                            /* Espacio interno. */
+    box-shadow: 0 8px 24px rgba(31, 41, 51, 0.08); /* Sombra suave. */
+}
+
+.tarjeta-angosta {                            /* Variante mas angosta para formularios. */
+    max-width: 520px;                         /* Ancho maximo. */
+}
+
+.dos-columnas {                               /* Dos cajas lado a lado (pagina de pago). */
+    display: grid;                            /* Usa una grilla. */
+    grid-template-columns: 1fr 1.4fr;         /* La segunda columna es un poco mas ancha. */
+    gap: 24px;                                /* Espacio entre columnas. */
+    align-items: start;                       /* Cada caja arriba, sin estirarse. */
+}
+
+/* ---------- Formularios ---------- */
+
+.formulario-panel {                           /* Formulario dentro de una tarjeta. */
+    display: flex;                            /* Campos en columna por defecto. */
+    flex-direction: column;                   /* Uno debajo del otro. */
+    gap: 16px;                                /* Espacio entre campos. */
+}
+
+.formulario-panel.fila {                      /* Variante en fila (formulario de reserva del dashboard). */
+    flex-direction: row;                      /* Campos uno al lado del otro. */
+    flex-wrap: wrap;                          /* Pasan a otra linea si no entran. */
+    align-items: flex-end;                    /* El boton queda alineado con la base de los campos. */
+}
+
+.fila {                                       /* Agrupa elementos en una fila. */
+    display: flex;                            /* Elementos en fila. */
+    gap: 16px;                                /* Espacio entre ellos. */
+    align-items: center;                      /* Centrados verticalmente. */
+    flex-wrap: wrap;                          /* Pasan a otra linea si no entran. */
+}
+
+.formulario-panel .campo {                    /* Cada campo del formulario del panel. */
+    flex: 1;                                  /* Se reparten el ancho disponible. */
+    min-width: 150px;                         /* Pero nunca mas chicos que 150px. */
+}
+
+.formulario-panel .fila .campo {              /* Campos dentro de una fila (vencimiento y CVV). */
+    min-width: 100px;                         /* Pueden ser mas chicos. */
+}
+
+.campo select,                                /* Aplica a las listas desplegables... */
+.campo input[type="date"],                    /* ...a los selectores de fecha... */
+.campo input[type="number"],                  /* ...a los campos numericos... */
+.campo input[type="text"] {                   /* ...y a los de texto. */
+    padding: 8px;                             /* Espacio interno, igual que los inputs del login. */
+    border: 1px solid #2e7d32;                /* Borde verde, igual que el login. */
+    border-radius: 5px;                       /* Esquinas redondeadas. */
+    font-family: inherit;                     /* Usa la misma tipografia que el resto. */
+    font-size: 14px;                          /* Tamaño de letra. */
+    background-color: white;                  /* Fondo blanco. */
+}
+
+.campo select:focus {                         /* Cuando se hace clic en una lista desplegable. */
+    outline: none;                            /* Saca el borde azul del navegador. */
+    border-color: #1f8f5f;                    /* Borde verde mas brillante. */
+    box-shadow: 0 0 0 3px rgba(31, 143, 95, 0.15); /* Aureola verde suave. */
+}
+
+.campo input:disabled {                       /* Campos deshabilitados (solo lectura). */
+    background-color: #eef2ef;                /* Fondo gris claro. */
+    border-color: #b9c9bf;                    /* Borde apagado. */
+    color: #5f7f68;                           /* Texto apagado. */
+}
+
+.aviso {                                      /* Cuadro informativo (ej: aviso de pago simulado). */
+    background-color: #fff8e1;                /* Fondo amarillo claro. */
+    color: #6b5400;                           /* Texto marron oscuro. */
+    padding: 10px;                            /* Espacio interno. */
+    border-radius: 5px;                       /* Esquinas redondeadas. */
+    font-size: 14px;                          /* Letra algo mas chica. */
+    margin: 0 0 16px;                         /* Separacion hacia abajo. */
+}
+
+/* ---------- Botones ---------- */
+
+.boton-panel {                                /* Boton principal del panel (sirve para <button> y <a>). */
+    font-weight: bold;                        /* Letra en negrita. */
+    background-color: #2f6f4e;                /* Verde de marca. */
+    color: white;                             /* Texto blanco. */
+    padding: 10px 18px;                       /* Espacio interno. */
+    border: none;                             /* Sin borde. */
+    border-radius: 5px;                       /* Esquinas redondeadas. */
+    cursor: pointer;                          /* Cursor de mano al pasar el mouse. */
+    text-decoration: none;                    /* Sin subrayado si es un enlace. */
+    font-family: inherit;                     /* Misma tipografia que el resto. */
+    font-size: 14px;                          /* Tamaño de letra. */
+    transition: background-color 0.2s ease, transform 0.2s ease; /* Cambios suaves. */
+}
+
+.boton-panel:hover {                          /* Cuando el mouse pasa por arriba. */
+    background-color: #24583e;                /* Verde mas oscuro. */
+    transform: translateY(-1px);              /* Sube 1px. */
+}
+
+.boton-chico {                                /* Boton pequeño para las filas de las tablas. */
+    display: inline-block;                    /* Permite darle tamaño a un enlace. */
+    background-color: white;                  /* Fondo blanco. */
+    color: #2f6f4e;                           /* Texto verde. */
+    border: 1px solid #2f6f4e;                /* Borde verde. */
+    border-radius: 5px;                       /* Esquinas redondeadas. */
+    padding: 5px 10px;                        /* Espacio interno. */
+    font-size: 13px;                          /* Letra chica. */
+    font-weight: 600;                         /* Letra semi-negrita. */
+    font-family: inherit;                     /* Misma tipografia. */
+    cursor: pointer;                          /* Cursor de mano. */
+    text-decoration: none;                    /* Sin subrayado si es un enlace. */
+}
+
+.boton-chico:hover {                          /* Cuando el mouse pasa por arriba. */
+    background-color: #e9f7ef;                /* Fondo verde clarito. */
+}
+
+.boton-peligro {                              /* Variante roja para acciones destructivas. */
+    color: #8a1f1f;                           /* Texto rojo oscuro. */
+    border-color: #8a1f1f;                    /* Borde rojo oscuro. */
+}
+
+.boton-peligro:hover {                        /* Cuando el mouse pasa por arriba. */
+    background-color: #fdecec;                /* Fondo rojo clarito. */
+}
+
+/* ---------- Tablas ---------- */
+
+.tabla-scroll {                               /* Contenedor que permite deslizar la tabla en pantallas chicas. */
+    overflow-x: auto;                         /* Barra de scroll horizontal solo si hace falta. */
+}
+
+.tabla {                                      /* Tabla de datos. */
+    width: 100%;                              /* Ocupa todo el ancho de la caja. */
+    border-collapse: collapse;                /* Une los bordes de las celdas. */
+    font-size: 14px;                          /* Tamaño de letra. */
+}
+
+.tabla th {                                   /* Celdas de encabezado. */
+    text-align: left;                         /* Texto alineado a la izquierda. */
+    padding: 10px 12px;                       /* Espacio interno. */
+    border-bottom: 2px solid #2f6f4e;         /* Linea verde debajo del encabezado. */
+    color: #0d1f16;                           /* Texto verde oscuro. */
+    white-space: nowrap;                      /* No parte el texto en dos lineas. */
+}
+
+.tabla td {                                   /* Celdas de datos. */
+    padding: 10px 12px;                       /* Espacio interno. */
+    border-bottom: 1px solid #e1e8e3;         /* Linea gris clara entre filas. */
+    vertical-align: middle;                   /* Contenido centrado verticalmente. */
+}
+
+.tabla small {                                /* Texto chico (ej: email bajo el nombre). */
+    color: #5f7f68;                           /* Gris verdoso. */
+}
+
+.acciones {                                   /* Celda con los botones de accion. */
+    display: flex;                            /* Botones en fila. */
+    gap: 6px;                                 /* Espacio entre botones. */
+    flex-wrap: wrap;                          /* Pasan a otra linea si no entran. */
+    align-items: center;                      /* Centrados verticalmente. */
+}
+
+.acciones form {                              /* Formularios de los botones dentro de la celda. */
+    margin: 0;                                /* Sin margen extra. */
+}
+
+/* ---------- Etiquetas de estado ---------- */
+
+.etiqueta {                                   /* Pildora de color para los estados. */
+    display: inline-block;                    /* Permite darle espacio interno. */
+    padding: 3px 10px;                        /* Espacio interno. */
+    border-radius: 12px;                      /* Bordes muy redondeados (forma de pildora). */
+    font-size: 12px;                          /* Letra chica. */
+    font-weight: 600;                         /* Letra semi-negrita. */
+}
+
+.etiqueta-confirmada {                        /* Estado confirmada / activa / cliente. */
+    background-color: #e9f7ef;                /* Fondo verde claro. */
+    color: #1f6b45;                           /* Texto verde. */
+}
+
+.etiqueta-cancelada {                         /* Estado cancelada / inactiva. */
+    background-color: #fdecec;                /* Fondo rojo claro. */
+    color: #8a1f1f;                           /* Texto rojo. */
+}
+
+.etiqueta-admin {                             /* Rol administrador. */
+    background-color: #0d1f16;                /* Fondo verde casi negro. */
+    color: #7ee8a4;                           /* Texto verde brillante. */
+}
+
+/* ---------- Resumen de pago ---------- */
+
+.resumen {                                    /* Lista de datos del resumen de reserva. */
+    display: grid;                            /* Usa una grilla de dos columnas. */
+    grid-template-columns: auto 1fr;          /* Etiqueta a la izquierda, valor a la derecha. */
+    gap: 10px 16px;                           /* Espacio entre filas y columnas. */
+    margin: 0 0 20px;                         /* Separacion hacia abajo. */
+}
+
+.resumen dt {                                 /* Nombre del dato (Cancha, Fecha...). */
+    color: #5f7f68;                           /* Gris verdoso. */
+}
+
+.resumen dd {                                 /* Valor del dato. */
+    margin: 0;                                /* Sin margen por defecto. */
+    font-weight: 600;                         /* Letra semi-negrita. */
+}
+
+.resumen .total {                             /* El valor del total a pagar. */
+    font-family: 'Oswald', Arial, sans-serif; /* Tipografia de titulos. */
+    font-size: 24px;                          /* Tamaño grande. */
+    color: #2f6f4e;                           /* Verde de marca. */
+}
+
+/* ---------- Mensajes dentro del panel ---------- */
+
+.panel-contenido .error,                      /* Mensajes de error dentro del panel... */
+.panel-contenido .exito {                     /* ...y de exito. */
+    margin: 0 0 20px;                         /* Separacion hacia abajo. */
+}
+
+/* ---------- Celulares ---------- */
+
+@media (max-width: 760px) {                   /* Reglas para pantallas de hasta 760px de ancho. */
+    .dos-columnas {                           /* La pagina de pago... */
+        grid-template-columns: 1fr;           /* ...pasa a una sola columna. */
+    }
+    .barra {                                  /* La barra superior... */
+        padding: 14px 16px;                   /* ...usa menos espacio lateral. */
+    }
+    .panel-contenido {                        /* El contenido... */
+        padding: 20px 14px 48px;              /* ...usa menos espacio. */
+    }
+}
+
+/* ---------- Banner de bienvenida (dashboard) ---------- */
+
+.hero-panel {                                 /* Banner grande de arriba del dashboard. */
+    background: linear-gradient(90deg, rgba(8, 20, 14, 0.88), rgba(8, 20, 14, 0.30)), url("https://images.unsplash.com/photo-1604412132568-9d5c14de13c4?auto=format&fit=crop&w=1200&q=80") center / cover, url("../img/canchas/fondo.svg") center / cover; /* Degradado oscuro + foto real + dibujo de respaldo. */
+    border-radius: 8px;                       /* Esquinas redondeadas. */
+    padding: 40px 32px;                       /* Espacio interno. */
+    color: #eef7f1;                           /* Texto claro. */
+    margin-bottom: 8px;                       /* Separacion hacia abajo. */
+}
+
+.hero-panel h1 {                              /* Saludo del banner. */
+    font-family: 'Oswald', Arial, sans-serif; /* Tipografia de titulos. */
+    font-size: 34px;                          /* Tamaño grande. */
+    margin: 0 0 8px;                          /* Separacion hacia abajo. */
+}
+
+.hero-panel p {                               /* Texto de ayuda del banner. */
+    margin: 0;                                /* Sin margen. */
+    color: #c9ddd0;                           /* Verde grisaceo claro. */
+    font-size: 16px;                          /* Tamaño de letra. */
+}
+
+/* ---------- Tarjetas de canchas ---------- */
+
+.grilla-canchas {                             /* Grilla que contiene las tarjetas. */
+    display: grid;                            /* Usa una grilla. */
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); /* Tantas columnas de 290px o mas como entren. */
+    gap: 24px;                                /* Espacio entre tarjetas. */
+}
+
+.cancha-card {                                /* Tarjeta de una cancha. */
+    background-color: white;                  /* Fondo blanco. */
+    border-radius: 8px;                       /* Esquinas redondeadas. */
+    overflow: hidden;                         /* La foto no se sale de las esquinas redondeadas. */
+    box-shadow: 0 8px 24px rgba(31, 41, 51, 0.08); /* Sombra suave. */
+    display: flex;                            /* Foto arriba, info abajo. */
+    flex-direction: column;                   /* En columna. */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Animacion suave al pasar el mouse. */
+}
+
+.cancha-card:hover {                          /* Cuando el mouse pasa por arriba. */
+    transform: translateY(-4px);              /* La tarjeta sube un poco. */
+    box-shadow: 0 14px 30px rgba(31, 41, 51, 0.16); /* La sombra se hace mas fuerte. */
+}
+
+.cancha-foto {                                /* Foto de la cancha dentro de la tarjeta. */
+    width: 100%;                              /* Ocupa todo el ancho. */
+    aspect-ratio: 8 / 5;                      /* Mantiene siempre la misma proporcion. */
+    object-fit: cover;                        /* Recorta la imagen para llenar el espacio sin deformarla. */
+    display: block;                           /* Evita un hueco debajo de la imagen. */
+}
+
+.cancha-info {                                /* Zona de texto de la tarjeta. */
+    padding: 16px 18px 18px;                  /* Espacio interno. */
+    display: flex;                            /* Contenido en columna. */
+    flex-direction: column;                   /* Uno debajo del otro. */
+    gap: 8px;                                 /* Espacio entre elementos. */
+    flex: 1;                                  /* Ocupa el alto restante (alinea los botones entre tarjetas). */
+}
+
+.cancha-titulo {                              /* Fila con nombre y precio. */
+    display: flex;                            /* Elementos en fila. */
+    justify-content: space-between;           /* Nombre a la izquierda, precio a la derecha. */
+    align-items: baseline;                    /* Alineados por la base del texto. */
+}
+
+.cancha-titulo h3 {                           /* Nombre de la cancha. */
+    margin: 0;                                /* Sin margen. */
+    font-family: 'Oswald', Arial, sans-serif; /* Tipografia de titulos. */
+    font-size: 20px;                          /* Tamaño de letra. */
+}
+
+.cancha-precio {                              /* Precio por hora. */
+    font-family: 'Oswald', Arial, sans-serif; /* Tipografia de titulos. */
+    font-size: 20px;                          /* Tamaño de letra. */
+    color: #2f6f4e;                           /* Verde de marca. */
+}
+
+.cancha-precio small {                        /* El texto "/hora". */
+    font-family: 'Inter', Arial, sans-serif;  /* Tipografia normal. */
+    font-size: 12px;                          /* Mas chico. */
+    color: #5f7f68;                           /* Gris verdoso. */
+}
+
+.etiqueta-tipo {                              /* Pildora con el tipo de cancha. */
+    background-color: #0d1f16;                /* Fondo verde casi negro. */
+    color: #7ee8a4;                           /* Texto verde brillante. */
+    align-self: flex-start;                   /* No se estira a todo el ancho. */
+}
+
+.cancha-desc {                                /* Descripcion de la cancha. */
+    margin: 0;                                /* Sin margen. */
+    color: #5f7f68;                           /* Gris verdoso. */
+    font-size: 14px;                          /* Tamaño de letra. */
+    min-height: 40px;                         /* Alto minimo para que las tarjetas queden parejas. */
+    flex: 1;                                  /* Empuja el formulario hacia abajo. */
+}
+
+.cancha-form {                                /* Formulario de reserva dentro de la tarjeta. */
+    display: grid;                            /* Usa una grilla. */
+    grid-template-columns: 1fr 90px;          /* Fecha ocupa el resto, hora 90px. */
+    gap: 8px;                                 /* Espacio entre campos. */
+}
+
+.cancha-form input,                           /* Fecha... */
+.cancha-form select {                         /* ...y hora de la tarjeta. */
+    padding: 8px;                             /* Espacio interno. */
+    border: 1px solid #2e7d32;                /* Borde verde. */
+    border-radius: 5px;                       /* Esquinas redondeadas. */
+    font-family: inherit;                     /* Misma tipografia. */
+    font-size: 14px;                          /* Tamaño de letra. */
+    min-width: 0;                             /* Permite que se achiquen sin romper la grilla. */
+}
+
+.cancha-form .boton-panel {                   /* Boton Reservar de la tarjeta. */
+    grid-column: 1 / -1;                      /* Ocupa las dos columnas. */
+}
+
+/* ---------- Imagenes en otras pantallas ---------- */
+
+.foto-resumen {                               /* Foto de la cancha en la pagina de pago. */
+    width: 100%;                              /* Ocupa todo el ancho de la caja. */
+    aspect-ratio: 8 / 5;                      /* Misma proporcion que las tarjetas. */
+    object-fit: cover;                        /* Recorta sin deformar. */
+    border-radius: 6px;                       /* Esquinas redondeadas. */
+    margin-bottom: 16px;                      /* Separacion hacia abajo. */
+    display: block;                           /* Evita un hueco debajo de la imagen. */
+}
+
+.miniatura {                                  /* Foto chica en la tabla de canchas del admin. */
+    width: 84px;                              /* Ancho fijo. */
+    height: 52px;                             /* Alto fijo. */
+    object-fit: cover;                        /* Recorta sin deformar. */
+    border-radius: 5px;                       /* Esquinas redondeadas. */
+    display: block;                           /* Evita huecos. */
+}
+
+.vista-previa {                               /* Foto actual en el formulario de edicion. */
+    width: 100%;                              /* Ocupa todo el ancho. */
+    max-width: 260px;                         /* Pero no mas de 260px. */
+    aspect-ratio: 8 / 5;                      /* Proporcion de las fotos. */
+    object-fit: cover;                        /* Recorta sin deformar. */
+    border-radius: 6px;                       /* Esquinas redondeadas. */
+}
+
+.campo input[type="file"] {                   /* Selector de archivo. */
+    font-family: inherit;                     /* Misma tipografia. */
+    font-size: 13px;                          /* Tamaño de letra. */
+}
+
+/* ---------- Campo de CVV oculto sin usar type="password" ---------- */
+
+.campo input.campo-oculto {                   /* CVV: es un campo de texto que se ve con puntos. */
+    -webkit-text-security: disc;              /* Muestra puntos en lugar de los numeros (Chrome, Edge, Safari). */
+    letter-spacing: 3px;                      /* Separa un poco los puntos. */
+}

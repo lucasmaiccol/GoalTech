@@ -1,0 +1,147 @@
+/* inicio.css: portada (index.php). Usa el tema compartido (tema.css), igual que el login y el registro. */
+
+.inicio-nav {                                 /* Barra superior de la portada. */
+    max-width: 1180px;                        /* Ancho maximo. */
+    margin: 0 auto;                           /* Centrada. */
+    padding: 26px 24px;                       /* Espacio interno. */
+    display: flex;                            /* Logo a un lado, enlaces al otro. */
+    justify-content: space-between;           /* Uno en cada extremo. */
+    align-items: center;                      /* Centrados verticalmente. */
+    box-sizing: border-box;                   /* El padding no agranda la barra. */
+}
+
+.inicio-nav .acciones-nav {                   /* Botones de la barra. */
+    display: flex;                            /* En fila. */
+    gap: 12px;                                /* Espacio entre botones. */
+    align-items: center;                      /* Centrados verticalmente. */
+}
+
+.inicio-nav .btn-borde,                       /* Los botones de la barra... */
+.inicio-nav .btn-verde {                      /* ...son un poco mas chicos. */
+    padding: 10px 20px;                       /* Espacio interno reducido. */
+    font-size: 14px;                          /* Letra mas chica. */
+}
+
+.inicio-hero {                                /* Seccion principal. */
+    max-width: 1180px;                        /* Ancho maximo. */
+    margin: 0 auto;                           /* Centrada. */
+    padding: 36px 24px 70px;                  /* Espacio interno. */
+    display: grid;                            /* Dos columnas: texto y fotos. */
+    grid-template-columns: 1.1fr 1fr;         /* La del texto un poco mas ancha. */
+    gap: 56px;                                /* Espacio entre columnas. */
+    align-items: center;                      /* Centradas verticalmente. */
+    box-sizing: border-box;                   /* El padding no agranda la seccion. */
+}
+
+.inicio-hero .acciones-hero {                 /* Fila de botones principales. */
+    display: flex;                            /* En fila. */
+    gap: 14px;                                /* Espacio entre botones. */
+    flex-wrap: wrap;                          /* Pasan a otra linea si no entran. */
+    margin-bottom: 30px;                      /* Separacion hacia abajo. */
+}
+
+.datos-hero {                                 /* Fila de datos cortos (24/7, Futbol 5, etc.). */
+    display: flex;                            /* En fila. */
+    gap: 28px;                                /* Espacio entre datos. */
+    flex-wrap: wrap;                          /* Pasan a otra linea si no entran. */
+}
+
+.datos-hero div {                             /* Cada dato. */
+    border-left: 3px solid var(--verde);      /* Linea verde a la izquierda. */
+    padding-left: 12px;                       /* Espacio despues de la linea. */
+}
+
+.datos-hero strong {                          /* Numero o palabra grande del dato. */
+    display: block;                           /* Ocupa su propia linea. */
+    font-family: 'Oswald', Arial, sans-serif; /* Tipografia de titulos. */
+    font-size: 24px;                          /* Tamaño grande. */
+    color: #ffffff;                           /* Blanco. */
+}
+
+.datos-hero span {                            /* Descripcion del dato. */
+    font-size: 13px;                          /* Letra chica. */
+    color: var(--texto-suave);                /* Texto claro apagado. */
+}
+
+.inicio-pasos {                               /* Seccion "como funciona". */
+    max-width: 1180px;                        /* Ancho maximo. */
+    margin: 0 auto;                           /* Centrada. */
+    padding: 10px 24px 70px;                  /* Espacio interno. */
+    box-sizing: border-box;                   /* El padding no agranda la seccion. */
+}
+
+.inicio-pasos h2 {                            /* Titulo de la seccion. */
+    font-family: 'Oswald', Arial, sans-serif; /* Tipografia de titulos. */
+    font-size: 30px;                          /* Tamaño. */
+    text-transform: uppercase;                /* Mayusculas. */
+    margin: 0 0 24px;                         /* Separacion hacia abajo. */
+    color: #ffffff;                           /* Blanco. */
+}
+
+.grilla-pasos {                               /* Grilla de tarjetas de pasos. */
+    display: grid;                            /* Usa una grilla. */
+    grid-template-columns: repeat(3, 1fr);    /* Tres columnas iguales. */
+    gap: 22px;                                /* Espacio entre tarjetas. */
+}
+
+.paso {                                       /* Tarjeta de un paso (efecto vidrio). */
+    background: rgba(255, 255, 255, 0.07);    /* Fondo blanco translucido. */
+    border: 1px solid rgba(255, 255, 255, 0.16); /* Borde fino. */
+    border-radius: 16px;                      /* Esquinas redondeadas. */
+    padding: 26px;                            /* Espacio interno. */
+    backdrop-filter: blur(8px);               /* Efecto vidrio. */
+    transition: transform 0.25s ease, border-color 0.25s ease; /* Animacion suave. */
+}
+
+.paso:hover {                                 /* Cuando el mouse pasa por arriba. */
+    transform: translateY(-6px);              /* Sube. */
+    border-color: rgba(126, 232, 164, 0.7);   /* El borde se pone verde. */
+}
+
+.paso .numero {                               /* Numero grande del paso. */
+    font-family: 'Oswald', Arial, sans-serif; /* Tipografia de titulos. */
+    font-size: 46px;                          /* Tamaño grande. */
+    color: var(--verde);                      /* Verde brillante. */
+    line-height: 1;                           /* Sin espacio extra. */
+    text-shadow: 0 0 24px rgba(126, 232, 164, 0.4); /* Brillo. */
+}
+
+.paso h3 {                                    /* Titulo del paso. */
+    font-size: 19px;                          /* Tamaño. */
+    margin: 10px 0 8px;                       /* Separacion. */
+    color: #ffffff;                           /* Blanco. */
+}
+
+.paso p {                                     /* Descripcion del paso. */
+    margin: 0;                                /* Sin margen. */
+    color: var(--texto-suave);                /* Texto claro apagado. */
+    font-size: 15px;                          /* Tamaño de letra. */
+    line-height: 1.55;                        /* Altura de linea. */
+}
+
+.inicio-pie {                                 /* Pie de pagina. */
+    text-align: center;                       /* Centrado. */
+    padding: 26px 16px 34px;                  /* Espacio interno. */
+    color: #8fb09b;                           /* Verde grisaceo. */
+    font-size: 13px;                          /* Letra chica. */
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Linea fina arriba. */
+}
+
+@media (max-width: 900px) {                   /* Reglas para tablets y celulares. */
+    .inicio-hero {                            /* La seccion principal... */
+        grid-template-columns: 1fr;           /* ...pasa a una columna... */
+        gap: 40px;                            /* ...con menos espacio. */
+        text-align: center;                   /* ...y todo centrado. */
+    }
+    .inicio-hero .texto-hero {                /* El parrafo... */
+        margin-left: auto;                    /* ...se centra. */
+        margin-right: auto;                   /* ...se centra. */
+    }
+    .inicio-hero .acciones-hero,              /* Los botones... */
+    .datos-hero {                             /* ...y los datos... */
+        justify-content: center;              /* ...se centran. */
+    }
+    .grilla-pasos {                           /* Las tarjetas de pasos... */
+        grid-template-columns: 1fr;           /* ...se apilan en una columna. */
+    }
+}

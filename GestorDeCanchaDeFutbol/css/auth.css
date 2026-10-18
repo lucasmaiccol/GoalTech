@@ -1,0 +1,152 @@
+/* auth.css: login y registro. Usa el tema compartido (tema.css) y deja todo en dos columnas: foto/collage a la izquierda y formulario a la derecha. */
+
+.auth-wrap {                                  /* Contenedor general de la pagina. */
+    max-width: 1180px;                        /* Ancho maximo. */
+    margin: 0 auto;                           /* Centrado. */
+    padding: 28px 24px 48px;                  /* Espacio alrededor. */
+    box-sizing: border-box;                   /* El padding no agranda el contenedor. */
+}
+
+.auth-grid {                                  /* Dos columnas: presentacion y formulario. */
+    display: grid;                            /* Usa una grilla. */
+    grid-template-columns: 1.15fr 1fr;        /* La izquierda un poco mas ancha. */
+    gap: 56px;                                /* Espacio entre columnas. */
+    align-items: center;                      /* Centradas verticalmente. */
+    margin-top: 28px;                         /* Separacion del logo. */
+}
+
+.auth-hero .beneficios {                      /* Lista de beneficios. */
+    list-style: none;                         /* Sin vinetas. */
+    padding: 0;                               /* Sin sangria. */
+    margin: 0 0 34px;                         /* Separacion hacia abajo. */
+    display: grid;                            /* Un item debajo del otro. */
+    gap: 10px;                                /* Espacio entre items. */
+}
+
+.auth-hero .beneficios li {                   /* Cada beneficio. */
+    color: var(--texto-suave);                /* Texto claro apagado. */
+    font-size: 15px;                          /* Tamaño de letra. */
+    padding-left: 28px;                       /* Espacio para el icono. */
+    position: relative;                       /* Para ubicar el icono. */
+}
+
+.auth-hero .beneficios li::before {           /* Icono de tilde de cada beneficio. */
+    content: "✓";                             /* El simbolo. */
+    position: absolute;                       /* Lo coloca a la izquierda. */
+    left: 0;                                  /* Pegado al borde. */
+    width: 20px;                              /* Ancho del circulo. */
+    height: 20px;                             /* Alto del circulo. */
+    border-radius: 50%;                       /* Circulo. */
+    background: rgba(126, 232, 164, 0.18);    /* Fondo verde suave. */
+    color: var(--verde);                      /* Tilde verde. */
+    font-size: 12px;                          /* Tamaño del tilde. */
+    font-weight: 700;                         /* Negrita. */
+    text-align: center;                       /* Tilde centrado. */
+    line-height: 20px;                        /* Centrado vertical. */
+}
+
+.auth-card {                                  /* Tarjeta con el formulario (efecto vidrio). */
+    background: rgba(255, 255, 255, 0.97);    /* Blanco casi opaco para que el formulario se lea perfecto. */
+    color: #1f2933;                           /* Texto oscuro dentro de la tarjeta. */
+    border-radius: 18px;                      /* Esquinas bien redondeadas. */
+    padding: 36px 34px 30px;                  /* Espacio interno. */
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(126, 232, 164, 0.25); /* Sombra fuerte + borde verde fino. */
+    box-sizing: border-box;                   /* El padding no agranda la tarjeta. */
+}
+
+.auth-card h1 {                               /* Titulo de la tarjeta. */
+    font-family: 'Oswald', Arial, sans-serif; /* Tipografia de titulos. */
+    font-size: 34px;                          /* Tamaño grande. */
+    margin: 0 0 6px;                          /* Separacion hacia abajo. */
+    color: #0d1f16;                           /* Verde muy oscuro. */
+    text-transform: uppercase;                /* Mayusculas. */
+}
+
+.auth-card .subtitulo-login {                 /* Subtitulo debajo del titulo. */
+    margin: 0 0 22px;                         /* Separacion hacia abajo. */
+    color: #5f7f68;                           /* Gris verdoso. */
+}
+
+.auth-card .formulario-login,                 /* El formulario del login... */
+.auth-card .formulario-registro {             /* ...y el del registro, sin caja propia (la tarjeta ya es la caja). */
+    background: transparent;                  /* Sin fondo propio. */
+    box-shadow: none;                         /* Sin sombra propia. */
+    padding: 0;                               /* Sin espacio interno propio. */
+    margin: 0;                                /* Sin margen. */
+    width: 100%;                              /* Todo el ancho de la tarjeta. */
+    max-width: none;                          /* Sin limite de ancho. */
+}
+
+.auth-card .boton-login,                      /* Boton de entrar... */
+.auth-card .boton-registro {                  /* ...y de registrarse. */
+    background: linear-gradient(135deg, #2f6f4e, #1f8f5f); /* Degradado verde de marca. */
+    padding: 13px;                            /* Boton mas alto. */
+    font-size: 15px;                          /* Tamaño de letra. */
+    border-radius: 8px;                       /* Esquinas redondeadas. */
+    box-shadow: 0 10px 24px rgba(31, 143, 95, 0.35); /* Brillo verde debajo. */
+}
+
+.auth-card .registro-link {                   /* Texto "¿No tienes cuenta?". */
+    color: #5f7f68;                           /* Gris verdoso. */
+    margin: 18px 0 0;                         /* Separacion hacia arriba. */
+    text-align: center;                       /* Centrado. */
+}
+
+.auth-card .registro-link a {                 /* Enlace dentro de ese texto. */
+    color: #1f8f5f;                           /* Verde. */
+    font-weight: 700;                         /* Negrita. */
+}
+
+.auth-card .volver-inicio {                   /* Enlace "Volver al inicio". */
+    display: block;                           /* Ocupa su propia linea. */
+    text-align: center;                       /* Centrado. */
+    margin-top: 10px;                         /* Separacion hacia arriba. */
+    color: #5f7f68;                           /* Gris verdoso. */
+    font-size: 14px;                          /* Letra chica. */
+}
+
+@media (max-width: 900px) {                   /* Reglas para tablets y celulares. */
+    .auth-grid {                              /* La grilla... */
+        grid-template-columns: 1fr;           /* ...pasa a una sola columna... */
+        gap: 36px;                            /* ...con menos espacio. */
+    }
+    .auth-card {                              /* La tarjeta del formulario... */
+        order: -1;                            /* ...va primero (arriba) en celulares. */
+        padding: 28px 22px 24px;              /* ...con menos espacio interno. */
+    }
+    .auth-hero {                              /* La presentacion... */
+        text-align: center;                   /* ...centrada. */
+    }
+    .auth-hero .texto-hero,                   /* El parrafo... */
+    .auth-hero .beneficios {                  /* ...y la lista... */
+        margin-left: auto;                    /* ...se centran. */
+        margin-right: auto;                   /* ...se centran. */
+        text-align: left;                     /* Pero el texto de la lista queda a la izquierda. */
+        max-width: 420px;                     /* Con un ancho acotado. */
+    }
+}
+
+/* ---------- Ajuste de tamaños para que todo entre en una pantalla ---------- */
+
+.auth-hero .titulo-grande {                   /* Titulo de la presentacion (mas chico que en la portada). */
+    font-size: clamp(30px, 3.6vw, 46px);      /* Tamaño que se adapta a la pantalla. */
+    margin: 14px 0 10px;                      /* Menos separacion. */
+}
+
+.auth-hero .texto-hero {                      /* Parrafo de la presentacion. */
+    font-size: 15px;                          /* Letra un poco mas chica. */
+    margin-bottom: 16px;                      /* Menos separacion. */
+}
+
+.auth-hero .beneficios {                      /* Lista de beneficios. */
+    margin-bottom: 22px;                      /* Menos separacion. */
+}
+
+.auth-hero .collage {                         /* Collage de fotos dentro del login/registro. */
+    height: 280px;                            /* Mas bajo para que entre en la pantalla. */
+    max-width: 500px;                         /* Un poco mas angosto. */
+}
+
+.auth-grid {                                  /* Grilla principal. */
+    margin-top: 12px;                         /* Menos espacio bajo el logo. */
+}
