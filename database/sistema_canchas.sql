@@ -45,8 +45,10 @@ CREATE TABLE reservas(
     monto DECIMAL(10,2) NOT NULL,                       -- Precio cobrado (se guarda por si luego cambia el precio de la cancha).
     estado ENUM('confirmada','cancelada') NOT NULL DEFAULT 'confirmada', -- Una reserva solo existe si fue "pagada", por eso nace confirmada.
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,     -- Fecha y hora en que se hizo la reserva.
+    turno_activo TINYINT GENERATED ALWAYS AS (IF(estado = 'confirmada', 1, NULL)) STORED, -- Columna AUTOMATICA: vale 1 si la reserva esta confirmada y NULL si esta cancelada.
     FOREIGN KEY(usuario_id) REFERENCES usuarios(id),    -- Obliga a que el usuario exista en la tabla usuarios.
-    FOREIGN KEY(cancha_id) REFERENCES canchas(id)       -- Obliga a que la cancha exista en la tabla canchas.
+    FOREIGN KEY(cancha_id) REFERENCES canchas(id),      -- Obliga a que la cancha exista en la tabla canchas.
+    UNIQUE KEY uq_turno (cancha_id, fecha, hora_inicio, turno_activo) -- Impide DOS reservas confirmadas en la misma cancha, dia y hora (las canceladas no cuentan porque turno_activo es NULL).
 );
 
 -- ============================================================
@@ -61,8 +63,30 @@ CREATE TABLE pagos(
     codigo VARCHAR(20) NOT NULL,                        -- Codigo de comprobante generado, ej: PAGO-A1B2C3D4.
     estado ENUM('aprobado','reembolsado') NOT NULL DEFAULT 'aprobado', -- Pasa a "reembolsado" si se cancela la reserva.
     fecha_pago TIMESTAMP DEFAULT CURRENT_TIMESTAMP,     -- Fecha y hora del pago.
+    UNIQUE KEY uq_pago_reserva (reserva_id),            -- Una reserva tiene UN solo pago (relacion 1 a 1).
     FOREIGN KEY(reserva_id) REFERENCES reservas(id) ON DELETE CASCADE -- Si se borra la reserva, se borra su pago tambien.
 );
+
+-- ============================================================
+-- TABLA intentos_login: intentos de login FALLIDOS (sirve para bloquear fuerza bruta).
+-- ============================================================
+CREATE TABLE intentos_login(
+    id INT AUTO_INCREMENT PRIMARY KEY,                  -- Identificador unico, se numera solo.
+    email VARCHAR(100) NOT NULL,                        -- Correo con el que se intento entrar.
+    ip VARCHAR(45) NOT NULL,                            -- Direccion IP desde donde se intento (45 caracteres alcanzan para IPv6).
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,          -- Fecha y hora del intento fallido.
+    INDEX idx_intentos_email (email, fecha),            -- Indice para contar rapido los intentos por correo.
+    INDEX idx_intentos_ip (ip, fecha)                   -- Indice para contar rapido los intentos por IP.
+);
+
+-- ============================================================
+-- USUARIO PROPIO DE LA APLICACION (buena practica: no usar "root").
+-- Solo tiene los permisos que la app necesita: leer, insertar, modificar y borrar datos.
+-- No puede crear ni borrar tablas ni bases de datos.
+-- ============================================================
+CREATE USER IF NOT EXISTS 'goaltech_app'@'localhost' IDENTIFIED BY 'goaltech_2026_clave'; -- Crea el usuario (si no existe).
+GRANT SELECT, INSERT, UPDATE, DELETE ON sistema_canchas.* TO 'goaltech_app'@'localhost';   -- Le da SOLO esos 4 permisos sobre esta base.
+FLUSH PRIVILEGES;                                       -- Aplica los permisos ahora mismo.
 
 -- ============================================================
 -- DATOS DE PRUEBA para poder usar el sistema apenas se importa.
