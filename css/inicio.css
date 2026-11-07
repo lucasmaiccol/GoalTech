@@ -145,3 +145,38 @@
         grid-template-columns: 1fr;           /* ...se apilan en una columna. */
     }
 }
+
+/* ---------- Boton de cerrar sesion como formulario y pagina de error ---------- */
+
+.form-inline {                                /* Formulario que se comporta como un boton en linea. */
+    display: inline-block;                    /* Se acomoda junto a los otros botones. */
+    margin: 0;                                /* Sin margen. */
+}
+
+.form-inline button {                         /* Boton dentro de ese formulario. */
+    font-family: inherit;                     /* Misma tipografia. */
+    cursor: pointer;                          /* Cursor de mano. */
+}
+
+.error-pagina {                               /* Contenido de la pagina de error. */
+    min-height: 70vh;                         /* Alto para centrarlo verticalmente. */
+    grid-template-columns: 1fr;               /* Una sola columna. */
+    justify-items: center;                    /* Centrado horizontal. */
+    text-align: center;                       /* Texto centrado. */
+}
+
+.error-pagina .texto-hero {                   /* Texto de la pagina de error. */
+    margin-left: auto;                        /* Centrado. */
+    margin-right: auto;                       /* Centrado. */
+}
+
+@media (max-width: 600px) {                   /* Reglas para celulares. */
+    .inicio-nav {                             /* Barra superior de la portada... */
+        flex-wrap: wrap;                      /* ...puede pasar a dos lineas... */
+        gap: 14px;                            /* ...con separacion. */
+        justify-content: center;              /* ...y centrada. */
+    }
+    .datos-hero {                             /* Datos destacados... */
+        gap: 16px;                            /* ...mas juntos. */
+    }
+}

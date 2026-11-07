@@ -494,3 +494,73 @@ body.panel {                                  /* Estilo base de todas las pagina
     -webkit-text-security: disc;              /* Muestra puntos en lugar de los numeros (Chrome, Edge, Safari). */
     letter-spacing: 3px;                      /* Separa un poco los puntos. */
 }
+
+/* ---------- Boton "Salir" (ahora es un formulario POST con token CSRF) ---------- */
+
+.form-salir {                                 /* Formulario del boton Salir. */
+    margin: 0;                                /* Sin margen. */
+    display: inline-block;                    /* Se acomoda en la fila del menu. */
+}
+
+.barra-nav button.barra-salir {               /* Boton Salir (se ve igual que antes). */
+    background: transparent;                  /* Sin fondo. */
+    color: #c9ddd0;                           /* Verde grisaceo claro. */
+    border: 1px solid #3a5a48;                /* Borde fino. */
+    border-radius: 6px;                       /* Esquinas redondeadas. */
+    padding: 6px 14px;                        /* Espacio interno. */
+    font-family: inherit;                     /* Misma tipografia. */
+    font-size: 16px;                          /* Mismo tamaño que los enlaces del menu. */
+    font-weight: 500;                         /* Grosor medio. */
+    cursor: pointer;                          /* Cursor de mano. */
+    transition: color 0.2s ease;              /* Cambio de color suave. */
+}
+
+.barra-nav button.barra-salir:hover {         /* Cuando el mouse pasa por arriba. */
+    color: #7ee8a4;                           /* Se pone verde brillante. */
+}
+
+/* ---------- Responsive: tablas y formularios en pantallas chicas ---------- */
+
+.tabla-scroll {                               /* Contenedor de las tablas. */
+    -webkit-overflow-scrolling: touch;        /* Desplazamiento suave en iPhone. */
+    max-width: 100%;                          /* Nunca mas ancho que la pantalla. */
+}
+
+.tabla {                                      /* Tablas del panel. */
+    min-width: 620px;                         /* Mantienen su ancho y se deslizan dentro del contenedor (no rompen la pagina). */
+}
+
+@media (max-width: 600px) {                   /* Reglas para celulares. */
+    .barra-nav {                              /* El menu... */
+        gap: 10px;                            /* ...usa menos espacio entre enlaces... */
+        width: 100%;                          /* ...ocupa todo el ancho... */
+    }
+    .barra-usuario {                          /* El texto del usuario... */
+        display: none;                        /* ...se oculta para ganar lugar. */
+    }
+    .panel-titulo {                           /* Titulos del panel... */
+        font-size: 26px;                      /* ...mas chicos. */
+    }
+    .hero-panel {                             /* Banner del dashboard... */
+        padding: 28px 20px;                   /* ...con menos espacio. */
+    }
+    .hero-panel h1 {                          /* Saludo del banner... */
+        font-size: 26px;                      /* ...mas chico. */
+    }
+    .tarjeta {                                /* Cajas blancas... */
+        padding: 18px;                        /* ...con menos espacio interno. */
+    }
+    .grilla-canchas {                         /* Grilla de canchas... */
+        grid-template-columns: 1fr;           /* ...en una sola columna. */
+    }
+    .formulario-panel.fila {                  /* Formularios en fila... */
+        flex-direction: column;               /* ...pasan a columna. */
+        align-items: stretch;                 /* ...y los campos ocupan todo el ancho. */
+    }
+    .formulario-panel .campo {                /* Campos de formulario... */
+        min-width: 0;                         /* ...pueden achicarse sin desbordar. */
+    }
+    .acciones {                               /* Botones de las tablas... */
+        flex-wrap: nowrap;                    /* ...quedan en una sola linea (la tabla se desliza). */
+    }
+}

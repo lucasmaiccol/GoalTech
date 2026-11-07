@@ -1,0 +1,7 @@
+# Configuracion local de la base de datos (contiene usuario y contraseña): NO se sube a GitHub.
+# Cada integrante copia config/config.example.php como config/config.php y pone sus datos.
+config/config.php
+
+# Fotos que suben los admins desde el panel: no se suben a GitHub (la carpeta se conserva con .gitkeep).
+uploads/canchas/*
+!uploads/canchas/.gitkeep

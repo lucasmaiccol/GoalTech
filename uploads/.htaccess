@@ -1,0 +1,4 @@
+# Proteccion de la carpeta de fotos subidas: aca NUNCA se ejecuta codigo PHP (solo se muestran imagenes).
+<FilesMatch "\.(php|phtml|phar|php[0-9])$">
+    Require all denied
+</FilesMatch>

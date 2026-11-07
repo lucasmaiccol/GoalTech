@@ -1,0 +1,6 @@
+# Proteccion general del sitio (Apache).
+# 1) Sin listado de carpetas: nadie puede ver el contenido de css/, img/ o uploads/ escribiendo la ruta.
+Options -Indexes
+
+# 2) La carpeta .git (historial del codigo) no se puede abrir desde el navegador.
+RedirectMatch 404 /\.git
